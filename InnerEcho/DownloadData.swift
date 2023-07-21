@@ -38,9 +38,20 @@ class DownloadData: ObservableObject {
                 }
                 return data
             }
-            .decode(type: [prompt].self, decoder: JSONDecoder())
-        
-        
+            .decode(type: [Prompt].self, decoder: JSONDecoder())
+            .sink { completion in
+                print("COMPLETION: \(completion)")
+                
+                switch completion {
+                case .finished:
+                    print("Finished!")
+                case .failure(let recievedError):
+                    print("Completion error: \(recievedError)")
+                }
+            } receiveValue: { [weak self] returnedPosts in
+                self?.prompts = returnedPosts
+            }
+            .store(in: &cancellables)
     }
     
     
