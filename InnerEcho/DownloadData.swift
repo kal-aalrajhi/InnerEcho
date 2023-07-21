@@ -11,7 +11,18 @@ import Combine
 
 class DownloadData: ObservableObject {
     @Published var prompts: [Prompt] = []
+    // Used in conjunction with publishers to control when a subscription should be cancelled
+    // Creating an empty set of Cancellables - by default publishers return cancellable instances and immediatly cancel subs
     var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        getPrompts()
+    }
+    
+    func getPrompts() {
+        
+        
+    }
     
     
 }
