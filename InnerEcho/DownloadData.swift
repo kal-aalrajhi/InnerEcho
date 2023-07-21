@@ -38,6 +38,7 @@ class DownloadData: ObservableObject {
                 }
                 return data
             }
+            .decode(type: [prompt].self, decoder: JSONDecoder())
         
         
     }
