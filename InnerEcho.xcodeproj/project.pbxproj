@@ -11,6 +11,7 @@
 		B7AB5B722A6AF4C500525AAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AB5B712A6AF4C500525AAB /* ContentView.swift */; };
 		B7AB5B742A6AF4C600525AAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7AB5B732A6AF4C600525AAB /* Assets.xcassets */; };
 		B7AB5B772A6AF4C600525AAB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7AB5B762A6AF4C600525AAB /* Preview Assets.xcassets */; };
+		B7AB5B7E2A6B0A0300525AAB /* PromptDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AB5B7D2A6B0A0300525AAB /* PromptDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		B7AB5B712A6AF4C500525AAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B7AB5B732A6AF4C600525AAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7AB5B762A6AF4C600525AAB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B7AB5B7D2A6B0A0300525AAB /* PromptDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				B7AB5B6F2A6AF4C500525AAB /* InnerEchoApp.swift */,
 				B7AB5B712A6AF4C500525AAB /* ContentView.swift */,
+				B7AB5B7D2A6B0A0300525AAB /* PromptDataModel.swift */,
 				B7AB5B732A6AF4C600525AAB /* Assets.xcassets */,
 				B7AB5B752A6AF4C600525AAB /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7AB5B722A6AF4C500525AAB /* ContentView.swift in Sources */,
+				B7AB5B7E2A6B0A0300525AAB /* PromptDataModel.swift in Sources */,
 				B7AB5B702A6AF4C500525AAB /* InnerEchoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
