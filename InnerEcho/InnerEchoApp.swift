@@ -11,7 +11,7 @@ import SwiftUI
 struct InnerEchoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DashboardView()
         }
     }
 }
