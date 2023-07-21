@@ -21,6 +21,12 @@ class DownloadData: ObservableObject {
     
     func getPrompts() {
         
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/albums") else {
+            print("Invalid URL.")
+            return
+        }
+        
+        
         
     }
     
