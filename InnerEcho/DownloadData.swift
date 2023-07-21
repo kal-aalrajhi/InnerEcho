@@ -26,6 +26,18 @@ class DownloadData: ObservableObject {
             return
         }
         
+        // 1. Create the publisher
+        URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .background)) // sub to publisher on BG thread
+            .receive(on: DispatchQueue.main) // recieve on the main thread
+            .tryMap { (data, response) -> Data in
+                guard let response = response as? HTTPURLResponse,
+                response.statusCode >= 200 && response.statusCode < 300 else {
+                    print("Response is not the correct type, please make sure it's a valid HTTPURLResponse type")
+                    throw URLError(.badServerResponse)
+                }
+                return data
+            }
         
         
     }
