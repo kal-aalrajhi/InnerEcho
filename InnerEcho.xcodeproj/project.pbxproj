@@ -15,6 +15,7 @@
 		B7AB5B802A6B0AF500525AAB /* DownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AB5B7F2A6B0AF500525AAB /* DownloadData.swift */; };
 		B7B2726C2A6EDC8F007872A3 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B2726B2A6EDC8F007872A3 /* PromptView.swift */; };
 		B7B272702A6EDE29007872A3 /* PromptHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B2726F2A6EDE29007872A3 /* PromptHistoryView.swift */; };
+		B7B272722A6EDF07007872A3 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B272712A6EDF07007872A3 /* FavoritesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		B7AB5B7F2A6B0AF500525AAB /* DownloadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadData.swift; sourceTree = "<group>"; };
 		B7B2726B2A6EDC8F007872A3 /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
 		B7B2726F2A6EDE29007872A3 /* PromptHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHistoryView.swift; sourceTree = "<group>"; };
+		B7B272712A6EDF07007872A3 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			children = (
 				B7AB5B6F2A6AF4C500525AAB /* InnerEchoApp.swift */,
 				B7AB5B712A6AF4C500525AAB /* DashboardView.swift */,
+				B7B272712A6EDF07007872A3 /* FavoritesView.swift */,
 				B7B2726F2A6EDE29007872A3 /* PromptHistoryView.swift */,
 				B7B2726B2A6EDC8F007872A3 /* PromptView.swift */,
 				B7AB5B7D2A6B0A0300525AAB /* PromptDataModel.swift */,
@@ -153,6 +156,7 @@
 				B7AB5B7E2A6B0A0300525AAB /* PromptDataModel.swift in Sources */,
 				B7AB5B702A6AF4C500525AAB /* InnerEchoApp.swift in Sources */,
 				B7B2726C2A6EDC8F007872A3 /* PromptView.swift in Sources */,
+				B7B272722A6EDF07007872A3 /* FavoritesView.swift in Sources */,
 				B7AB5B802A6B0AF500525AAB /* DownloadData.swift in Sources */,
 				B7B272702A6EDE29007872A3 /* PromptHistoryView.swift in Sources */,
 			);
