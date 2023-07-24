@@ -34,6 +34,7 @@ struct DashboardView: View {
                     Text("Settings")
                 }
         }
+        .preferredColorScheme(.dark)
     }
 }
 

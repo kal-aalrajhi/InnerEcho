@@ -23,7 +23,8 @@ struct PromptView: View {
             
             TextEditor(text: $text)
                 .onReceive(text.publisher.collect()) {
-                    let filtered = String($0.prefix(250))
+                    let filtered = String($0.prefix(200))
+                    
                     if filtered != text {
                         text = filtered
                     }
@@ -32,6 +33,8 @@ struct PromptView: View {
                 .padding(10)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
                 .padding(10)
+//                .colorMultiply(.gray)
+            
         }
     }
 }
