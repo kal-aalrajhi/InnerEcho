@@ -18,11 +18,21 @@ struct DashboardView: View {
             
             PromptHistoryView()
                 .tabItem {
-                    Image(systemName: "")
+                    Image(systemName: "book")
+                    Text("History")
                 }
             
+            FavoritesView()
+                .tabItem {
+                    Image(systemName: "heart")
+                    Text("Favorites")
+                }
             
-            
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
         }
     }
 }
