@@ -17,6 +17,7 @@
 		B7B272702A6EDE29007872A3 /* PromptHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B2726F2A6EDE29007872A3 /* PromptHistoryView.swift */; };
 		B7B272722A6EDF07007872A3 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B272712A6EDF07007872A3 /* FavoritesView.swift */; };
 		B7B272762A6EE005007872A3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B272752A6EE005007872A3 /* SettingsView.swift */; };
+		B7B272792A6F31C0007872A3 /* PromptResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B272782A6F31C0007872A3 /* PromptResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B7B272712A6EDF07007872A3 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		B7B272752A6EE005007872A3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B7B272772A6F07E5007872A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B7B272782A6F31C0007872A3 /* PromptResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			children = (
 				B7AB5B712A6AF4C500525AAB /* DashboardView.swift */,
 				B7B2726B2A6EDC8F007872A3 /* PromptView.swift */,
+				B7B272782A6F31C0007872A3 /* PromptResponse.swift */,
 				B7B2726F2A6EDE29007872A3 /* PromptHistoryView.swift */,
 				B7B272712A6EDF07007872A3 /* FavoritesView.swift */,
 				B7B272752A6EE005007872A3 /* SettingsView.swift */,
@@ -180,6 +183,7 @@
 				B7B2726C2A6EDC8F007872A3 /* PromptView.swift in Sources */,
 				B7B272722A6EDF07007872A3 /* FavoritesView.swift in Sources */,
 				B7AB5B802A6B0AF500525AAB /* DownloadData.swift in Sources */,
+				B7B272792A6F31C0007872A3 /* PromptResponse.swift in Sources */,
 				B7B272702A6EDE29007872A3 /* PromptHistoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

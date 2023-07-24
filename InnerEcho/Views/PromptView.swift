@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PromptView: View {
     @State private var text = "respond here."
+    @State private var savedText = ""
+    
     var body: some View {
         VStack {
             Image(MockPrompt.samplePrompt.url)
@@ -22,13 +24,6 @@ struct PromptView: View {
                 .bold()
             
             TextEditor(text: $text)
-                .onReceive(text.publisher.collect()) {
-                    let filtered = String($0.prefix(200))
-                    
-                    if filtered != text {
-                        text = filtered
-                    }
-                }
                 .font(.system(size: 14))
                 .padding(10)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
@@ -36,7 +31,7 @@ struct PromptView: View {
 //                .colorMultiply(.gray)
             
             Button {
-                
+                savedText = text
             } label: {
                 Text("Save".uppercased())
                     .font(.headline)
@@ -46,7 +41,7 @@ struct PromptView: View {
                     .background(.blue)
                     .cornerRadius(10)
             }
-            
+            // Add full screen cover (like a sheet?)
         }
     }
 }
