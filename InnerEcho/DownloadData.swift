@@ -16,13 +16,18 @@ class DownloadData: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     
     init() {
-//        getPrompts()
+        if let url = URL(string: "https://jsonplaceholder.typicode.com/albums") {
+            getPrompts(from: url)
+        } else {
+            print("Invalid initializer URL.")
+        }
     }
     
     func getPrompts(from url: URL) {
-            checkURL(url).decode(type: [Prompt].self, decoder: JSONDecoder())
+            checkURL(url)
+            .decode(type: [Prompt].self, decoder: JSONDecoder())
             .sink { completion in
-                print("COMPLETION: \(completion)") // returns finished or failure
+                print("COMPLETION TYPE: \(completion)") // returns finished or failure
                 
                 switch completion {
                 case .finished:
