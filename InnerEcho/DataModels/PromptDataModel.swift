@@ -11,4 +11,10 @@ import Foundation
 struct Prompt: Identifiable, Codable {
     let id: Int
     let title: String
+    let url: String // image URL
 }
+
+
+//struct MockPromptData {
+////    static let samplePrompt =
+//}
