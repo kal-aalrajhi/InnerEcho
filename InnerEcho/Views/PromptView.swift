@@ -14,7 +14,7 @@ struct PromptView: View {
             Image(MockPrompt.samplePrompt.url)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: .infinity, height: 350)
+                .frame(height: 350)
                 .cornerRadius(6)
             
             Text(MockPrompt.samplePrompt.title)
@@ -34,6 +34,18 @@ struct PromptView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
                 .padding(10)
 //                .colorMultiply(.gray)
+            
+            Button {
+                
+            } label: {
+                Text("Save".uppercased())
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .frame(width: 250)
+                    .background(.blue)
+                    .cornerRadius(10)
+            }
             
         }
     }
