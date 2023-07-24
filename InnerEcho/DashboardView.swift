@@ -15,6 +15,11 @@ struct DashboardView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
+            
+            PromptHistoryView()
+                .tabItem {
+                    Image(systemName: "")
+                }
         }
     }
 }
