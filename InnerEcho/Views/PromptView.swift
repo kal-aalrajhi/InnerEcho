@@ -10,7 +10,10 @@ import SwiftUI
 struct PromptView: View {
     
     var body: some View {
-        Text("Some Prompt")
+        VStack {
+//            Image
+            Text("Some Prompt")
+        }
     }
 }
 

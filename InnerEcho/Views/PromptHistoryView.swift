@@ -12,13 +12,16 @@ struct PromptHistoryView: View {
     @StateObject var vm = DownloadData()
     
     var body: some View {
-        List {
-            ForEach(vm.prompts) { prompt in
-                LazyVStack(alignment: .leading, spacing: 10) {
-                    Text(prompt.title)
-                        .font(.headline)
+        NavigationView {
+            List {
+                ForEach(vm.prompts) { prompt in
+                    LazyVStack(alignment: .leading, spacing: 10) {
+                        Text(prompt.title)
+                            .font(.headline)
+                    }
                 }
             }
+            .navigationTitle("History")
         }
     }
 }
