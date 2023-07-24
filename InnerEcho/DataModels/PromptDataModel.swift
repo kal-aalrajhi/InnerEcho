@@ -13,3 +13,9 @@ struct Prompt: Identifiable, Codable {
     let title: String
     let url: String // full image URL
 }
+
+struct MockPrompt {
+    static let samplePrompt = Prompt(id: 19,
+                                     title: "Some random prompt with filler text. Is this what you were looking for?",
+                                     url: "mock-image")
+}
