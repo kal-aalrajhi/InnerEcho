@@ -9,16 +9,12 @@ import SwiftUI
 struct DashboardView: View {
     
     var body: some View {
-//        List {
-//            ForEach(vm.prompts) { prompt in
-//                LazyVStack(alignment: .leading, spacing: 10) {
-//                    Text(prompt.title)
-//                        .font(.headline)
-//                }
-//            }
-//        }
         TabView {
-            
+            PromptView()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
         }
     }
 }

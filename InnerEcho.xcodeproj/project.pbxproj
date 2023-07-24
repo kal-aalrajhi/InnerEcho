@@ -14,6 +14,7 @@
 		B7AB5B7E2A6B0A0300525AAB /* PromptDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AB5B7D2A6B0A0300525AAB /* PromptDataModel.swift */; };
 		B7AB5B802A6B0AF500525AAB /* DownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AB5B7F2A6B0AF500525AAB /* DownloadData.swift */; };
 		B7B2726C2A6EDC8F007872A3 /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B2726B2A6EDC8F007872A3 /* PromptView.swift */; };
+		B7B2726E2A6EDD70007872A3 /* PromptHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B2726D2A6EDD70007872A3 /* PromptHistory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		B7AB5B7D2A6B0A0300525AAB /* PromptDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptDataModel.swift; sourceTree = "<group>"; };
 		B7AB5B7F2A6B0AF500525AAB /* DownloadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadData.swift; sourceTree = "<group>"; };
 		B7B2726B2A6EDC8F007872A3 /* PromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
+		B7B2726D2A6EDD70007872A3 /* PromptHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptHistory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				B7AB5B6F2A6AF4C500525AAB /* InnerEchoApp.swift */,
 				B7AB5B712A6AF4C500525AAB /* DashboardView.swift */,
+				B7B2726D2A6EDD70007872A3 /* PromptHistory.swift */,
 				B7B2726B2A6EDC8F007872A3 /* PromptView.swift */,
 				B7AB5B7D2A6B0A0300525AAB /* PromptDataModel.swift */,
 				B7AB5B7F2A6B0AF500525AAB /* DownloadData.swift */,
@@ -150,6 +153,7 @@
 				B7AB5B7E2A6B0A0300525AAB /* PromptDataModel.swift in Sources */,
 				B7AB5B702A6AF4C500525AAB /* InnerEchoApp.swift in Sources */,
 				B7B2726C2A6EDC8F007872A3 /* PromptView.swift in Sources */,
+				B7B2726E2A6EDD70007872A3 /* PromptHistory.swift in Sources */,
 				B7AB5B802A6B0AF500525AAB /* DownloadData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
