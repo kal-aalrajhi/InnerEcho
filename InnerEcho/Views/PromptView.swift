@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PromptView: View {
+    @State private var text = "respond here."
     var body: some View {
         VStack {
             Image(MockPrompt.samplePrompt.url)
@@ -15,7 +16,22 @@ struct PromptView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: .infinity, height: 350)
                 .cornerRadius(6)
+            
             Text(MockPrompt.samplePrompt.title)
+                .font(.largeTitle)
+                .bold()
+            
+            TextEditor(text: $text)
+                .onReceive(text.publisher.collect()) {
+                    let filtered = String($0.prefix(250))
+                    if filtered != text {
+                        text = filtered
+                    }
+                }
+                .font(.system(size: 14))
+                .padding(10)
+                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
+                .padding(10)
         }
     }
 }
