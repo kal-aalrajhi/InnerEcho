@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct PromptView: View {
-    
     var body: some View {
         VStack {
-//            Image
-            Text("Some Prompt")
+            Image(MockPrompt.samplePrompt.url)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: .infinity, height: 350)
+                .cornerRadius(6)
+            Text(MockPrompt.samplePrompt.title)
         }
     }
 }
