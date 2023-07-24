@@ -16,14 +16,10 @@ class DownloadData: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     
     init() {
-        if let url = URL(string: "https://jsonplaceholder.typicode.com/albums") {
-            getPrompts(from: url)
-        } else {
-            print("Invalid initializer URL.")
-        }
+            getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
     }
     
-    func getPrompts(from url: URL) {
+    func getPrompts(from url: String) {
             checkURL(url)
             .decode(type: [Prompt].self, decoder: JSONDecoder())
             .sink { completion in
@@ -42,8 +38,8 @@ class DownloadData: ObservableObject {
     }
     
     // Helper function
-    private func checkURL(_ url: URL) -> AnyPublisher<Data, Error> {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/albums") else {
+    private func checkURL(_ urlStr: String) -> AnyPublisher<Data, Error> {
+        guard let url = URL(string: urlStr) else {
             print("Invalid URL.")
             fatalError("Invalid URL.") // There's no way to recover from this error, so we'll just cause the program to crash.
         }
