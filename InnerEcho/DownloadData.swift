@@ -23,7 +23,7 @@ class DownloadData: ObservableObject {
             checkURL(url)
             .decode(type: [Prompt].self, decoder: JSONDecoder())
             .sink { completion in
-                print("COMPLETION TYPE: \(completion)") // returns finished or failure
+                print("COMPLETION TYPE: \(completion)")
                 
                 switch completion {
                 case .finished:
