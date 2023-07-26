@@ -12,12 +12,11 @@ import Combine
 final class PromptData: ObservableObject {
     @Published var prompts: [Prompt] = []
     @Published var savedPrompts: [Prompt] = []
-    @Published var currentPrompt: Prompt
+    @Published var currentPrompt: Prompt = MockPrompt.samplePrompt
     var cancellables = Set<AnyCancellable>()
     
     init() {
-            currentPrompt = Prompt(id: 0, title: "", url: "", userResponse: "")
-            getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
+        getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
     }
     
     func getPrompts(from url: String) {

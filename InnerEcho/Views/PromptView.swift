@@ -13,13 +13,13 @@ struct PromptView: View {
     
     var body: some View {
         VStack {
-            Image(MockPrompt.samplePrompt.url)
+            Image(promptData.currentPrompt.url)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 350)
                 .cornerRadius(6)
             
-            Text(MockPrompt.samplePrompt.title)
+            Text(promptData.currentPrompt.title)
                 .font(.largeTitle)
                 .bold()
             

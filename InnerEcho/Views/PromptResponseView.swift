@@ -11,25 +11,27 @@ struct PromptResponseView: View {
     @ObservedObject var promptData: PromptData
     @Environment(\.dismiss) var dismiss
     
-    @State private var text = "respond here."
-    @State private var savedText = ""
+    @State private var responseText = "respond here."
     
     var body: some View {
         NavigationView {
             VStack {
-                Text(MockPrompt.samplePrompt.title)
+                Text(promptData.currentPrompt.title)
                     .font(.largeTitle)
                     .bold()
                 
-                TextEditor(text: $text)
+                TextEditor(text: $responseText)
                     .font(.body)
                     .padding(10)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
                     .padding(10)
                 
                 Button {
-//                    savedText = text
-                    MockPrompt.samplePrompt.userResponse = text
+//                    promptData.currentPrompt.userResponse = responseText
+//                    promptData.savedPrompts.append(promptData.currentPrompt)
+                    let promptTest = Prompt(id: 100, title: "Test", url: "www.", userResponse: "THSISIS")
+                    print("HELLO!")
+                    promptData.savedPrompts.append(promptTest)
                     dismiss()
                 } label: {
                     Text("Save".uppercased())
