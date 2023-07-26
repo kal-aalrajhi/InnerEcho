@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct PromptView: View {
-    @State private var text = "respond here."
-    @State private var savedText = ""
+    @State private var showingPromptResponse = false
     
     var body: some View {
         VStack {
@@ -23,25 +22,12 @@ struct PromptView: View {
                 .font(.largeTitle)
                 .bold()
             
-            TextEditor(text: $text)
-                .font(.system(size: 14))
-                .padding(10)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
-                .padding(10)
-//                .colorMultiply(.gray)
-            
-            Button {
-                savedText = text
-            } label: {
-                Text("Save".uppercased())
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding(10)
-                    .frame(width: 250)
-                    .background(.blue)
-                    .cornerRadius(10)
+            Button("Response") {
+                showingPromptResponse.toggle()
             }
-            // Add full screen cover (like a sheet?)
+            .fullScreenCover(isPresented: $showingPromptResponse) {
+                PromptResponseView()
+            }
         }
     }
 }
