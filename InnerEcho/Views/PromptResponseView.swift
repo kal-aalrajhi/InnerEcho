@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PromptResponseView: View {
+    @ObservedObject var promptData: PromptData
     @Environment(\.dismiss) var dismiss
-//    @ObservedObject var prompts: 
+    
     @State private var text = "respond here."
     @State private var savedText = ""
     
@@ -51,6 +52,6 @@ struct PromptResponseView: View {
 
 struct PromptResponse_Previews: PreviewProvider {
     static var previews: some View {
-        PromptResponseView()
+        PromptResponseView(promptData: PromptData())
     }
 }

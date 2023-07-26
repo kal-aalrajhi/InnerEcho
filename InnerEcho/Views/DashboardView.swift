@@ -7,16 +7,18 @@
 import SwiftUI
 
 struct DashboardView: View {
+    // Storing the source of truth (this is our VM)
+    @StateObject var promptDataVM = PromptData()
     
     var body: some View {
         TabView {
-            PromptView()
+            PromptView(promptData: promptDataVM)
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
                 }
             
-            PromptHistoryView()
+            PromptHistoryView(promptData: promptDataVM)
                 .tabItem {
                     Image(systemName: "book")
                     Text("History")

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PromptView: View {
-    
+    @ObservedObject var promptData: PromptData
     @State private var showingPromptResponse = false
     
     var body: some View {
@@ -27,7 +27,7 @@ struct PromptView: View {
                 showingPromptResponse.toggle()
             }
             .fullScreenCover(isPresented: $showingPromptResponse) {
-                PromptResponseView()
+                PromptResponseView(promptData: PromptData())
             }
         }
     }
@@ -35,6 +35,6 @@ struct PromptView: View {
 
 struct PromptView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptView()
+        PromptView(promptData: PromptData())
     }
 }
