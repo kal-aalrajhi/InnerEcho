@@ -9,11 +9,12 @@ import SwiftUI
 
 struct PromptHistoryView: View {
     
-    @StateObject var vm = DownloadData()
+    @StateObject var vm = DownloadPromptData()
     
     var body: some View {
         NavigationView {
             List {
+                // Only display IF there is a non blank response to it
                 ForEach(vm.prompts) { prompt in
                     LazyVStack(alignment: .leading, spacing: 10) {
                         Text(prompt.title)
