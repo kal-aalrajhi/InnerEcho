@@ -14,8 +14,12 @@ struct PromptResponseView: View {
     
     var body: some View {
         VStack {
+            Text(MockPrompt.samplePrompt.title)
+                .font(.largeTitle)
+                .bold()
+            
             TextEditor(text: $text)
-                .font(.system(size: 14))
+                .font(.body)
                 .padding(10)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
                 .padding(10)
