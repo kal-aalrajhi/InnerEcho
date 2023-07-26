@@ -25,7 +25,7 @@ struct PromptView: View {
             Button("Response") {
                 showingPromptResponse.toggle()
             }
-            .fullScreenCover(isPresented: $showingPromptResponse) {
+            .sheet(isPresented: $showingPromptResponse) {
                 PromptResponseView()
             }
         }
