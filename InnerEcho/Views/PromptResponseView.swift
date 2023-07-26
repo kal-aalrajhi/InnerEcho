@@ -28,7 +28,9 @@ struct PromptResponseView: View {
                     .padding(10)
                 
                 Button {
-                    savedText = text
+//                    savedText = text
+                    MockPrompt.samplePrompt.userResponse = text
+                    dismiss()
                 } label: {
                     Text("Save".uppercased())
                         .font(.headline)
