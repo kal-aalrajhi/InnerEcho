@@ -16,7 +16,7 @@ class DownloadData: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     
     init() {
-            getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
+//            getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
     }
     
     func getPrompts(from url: String) {

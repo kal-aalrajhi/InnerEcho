@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PromptResponseView: View {
     @Environment(\.dismiss) var dismiss
-    
+//    @ObservedObject var prompts: 
     @State private var text = "respond here."
     @State private var savedText = ""
     

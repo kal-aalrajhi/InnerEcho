@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PromptView: View {
+    
     @State private var showingPromptResponse = false
     
     var body: some View {
@@ -25,7 +26,7 @@ struct PromptView: View {
             Button("Response") {
                 showingPromptResponse.toggle()
             }
-            .sheet(isPresented: $showingPromptResponse) {
+            .fullScreenCover(isPresented: $showingPromptResponse) {
                 PromptResponseView()
             }
         }
