@@ -29,6 +29,6 @@ struct PromptHistoryView: View {
 
 struct PromptHistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptHistoryView()
+        PromptHistoryView().environmentObject(PromptData())
     }
 }

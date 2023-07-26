@@ -54,6 +54,6 @@ struct PromptResponseView: View {
 
 struct PromptResponse_Previews: PreviewProvider {
     static var previews: some View {
-        PromptResponseView()
+        PromptResponseView().environmentObject(PromptData())
     }
 }
