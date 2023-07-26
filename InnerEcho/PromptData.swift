@@ -11,11 +11,12 @@ import Combine
 
 final class PromptData: ObservableObject {
     @Published var prompts: [Prompt] = []
-    // Used in conjunction with publishers to control when a subscription should be cancelled
-    // Creating an empty set of Cancellables - by default publishers return cancellable instances and immediatly cancel subs
+    @Published var savedPrompts: [Prompt] = []
+    @Published var currentPrompt: Prompt
     var cancellables = Set<AnyCancellable>()
     
     init() {
+            currentPrompt = Prompt(id: 0, title: "", url: "", userResponse: "")
             getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
     }
     
