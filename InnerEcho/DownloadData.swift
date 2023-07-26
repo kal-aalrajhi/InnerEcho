@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 class DownloadData: ObservableObject {
-    @Published var prompts: [Prompt] = []    
+    @Published var prompts: [Prompt] = []
     // Used in conjunction with publishers to control when a subscription should be cancelled
     // Creating an empty set of Cancellables - by default publishers return cancellable instances and immediatly cancel subs
     var cancellables = Set<AnyCancellable>()
@@ -21,7 +21,7 @@ class DownloadData: ObservableObject {
     
     func getPrompts(from url: String) {
             checkURL(url)
-            .decode(type: [Prompt].self, decoder: JSONDecoder())
+            .decode(type: [PromptWrapper].self, decoder: JSONDecoder())
             .sink { completion in
                 print("COMPLETION TYPE: \(completion)")
                 
@@ -31,8 +31,8 @@ class DownloadData: ObservableObject {
                 case .failure(let recievedError):
                     print("Completion error: \(recievedError)")
                 }
-            } receiveValue: { [weak self] returnedPosts in
-                self?.prompts = returnedPosts
+            } receiveValue: { [weak self] returnedPromptWrappers in
+                self?.prompts = returnedPromptWrappers.map { $0.toPrompt }
             }
             .store(in: &cancellables)
     }
