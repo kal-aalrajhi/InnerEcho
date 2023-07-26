@@ -9,25 +9,21 @@
 import Foundation
 import Combine
 
-class DownloadData: ObservableObject {
-    @Published var prompts: [Prompt] = []    
+final class PromptData: ObservableObject {
+    @Published var prompts: [Prompt] = []
     // Used in conjunction with publishers to control when a subscription should be cancelled
     // Creating an empty set of Cancellables - by default publishers return cancellable instances and immediatly cancel subs
     var cancellables = Set<AnyCancellable>()
     
     init() {
-        if let url = URL(string: "https://jsonplaceholder.typicode.com/albums") {
-            getPrompts(from: url)
-        } else {
-            print("Invalid initializer URL.")
-        }
+            getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
     }
     
-    func getPrompts(from url: URL) {
+    func getPrompts(from url: String) {
             checkURL(url)
-            .decode(type: [Prompt].self, decoder: JSONDecoder())
+            .decode(type: [PromptWrapper].self, decoder: JSONDecoder())
             .sink { completion in
-                print("COMPLETION TYPE: \(completion)") // returns finished or failure
+                print("COMPLETION TYPE: \(completion)")
                 
                 switch completion {
                 case .finished:
@@ -35,15 +31,15 @@ class DownloadData: ObservableObject {
                 case .failure(let recievedError):
                     print("Completion error: \(recievedError)")
                 }
-            } receiveValue: { [weak self] returnedPosts in
-                self?.prompts = returnedPosts
+            } receiveValue: { [weak self] returnedPromptWrappers in
+                self?.prompts = returnedPromptWrappers.map { $0.toPrompt }
             }
             .store(in: &cancellables)
     }
     
     // Helper function
-    private func checkURL(_ url: URL) -> AnyPublisher<Data, Error> {
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/albums") else {
+    private func checkURL(_ urlStr: String) -> AnyPublisher<Data, Error> {
+        guard let url = URL(string: urlStr) else {
             print("Invalid URL.")
             fatalError("Invalid URL.") // There's no way to recover from this error, so we'll just cause the program to crash.
         }
