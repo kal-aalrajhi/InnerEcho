@@ -12,6 +12,7 @@ struct InnerEchoApp: App {
     var body: some Scene {
         WindowGroup {
             DashboardView()
+                .environmentObject(PromptData())
         }
     }
 }

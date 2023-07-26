@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PromptHistoryView: View {
-    @ObservedObject var promptData: PromptData
+    @EnvironmentObject var promptData: PromptData
     
     var body: some View {
         NavigationView {
@@ -29,6 +29,6 @@ struct PromptHistoryView: View {
 
 struct PromptHistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptHistoryView(promptData: PromptData())
+        PromptHistoryView()
     }
 }

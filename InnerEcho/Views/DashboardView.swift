@@ -8,7 +8,6 @@ import SwiftUI
 
 struct DashboardView: View {
     // Storing the source of truth (this is our VM) | An array of all prompt questions, with blank responses
-    @StateObject var promptDataVM = PromptData()
     // When a user hits 'save' it should be stored long-term into this object
     // The current prompt should be the prompt displayed that the user is meant to answer for the day
     
@@ -17,13 +16,13 @@ struct DashboardView: View {
     
     var body: some View {
         TabView {
-            PromptView(promptData: promptDataVM)
+            PromptView()
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home")
                 }
             
-            PromptHistoryView(promptData: promptDataVM)
+            PromptHistoryView()
                 .tabItem {
                     Image(systemName: "book")
                     Text("History")

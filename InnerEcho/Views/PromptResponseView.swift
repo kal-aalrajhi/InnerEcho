@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PromptResponseView: View {
-    @ObservedObject var promptData: PromptData
+    @EnvironmentObject var promptData: PromptData
     @Environment(\.dismiss) var dismiss
     
     @State private var responseText = "respond here."
@@ -27,11 +27,9 @@ struct PromptResponseView: View {
                     .padding(10)
                 
                 Button {
-//                    promptData.currentPrompt.userResponse = responseText
-//                    promptData.savedPrompts.append(promptData.currentPrompt)
-                    let promptTest = Prompt(id: 100, title: "Test", url: "www.", userResponse: "THSISIS")
-                    print("HELLO!")
-                    promptData.savedPrompts.append(promptTest)
+                    promptData.currentPrompt.userResponse = responseText
+                    promptData.savedPrompts.append(promptData.currentPrompt)
+
                     dismiss()
                 } label: {
                     Text("Save".uppercased())
@@ -56,6 +54,6 @@ struct PromptResponseView: View {
 
 struct PromptResponse_Previews: PreviewProvider {
     static var previews: some View {
-        PromptResponseView(promptData: PromptData())
+        PromptResponseView()
     }
 }
