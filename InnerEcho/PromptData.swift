@@ -11,16 +11,33 @@ import Combine
 
 final class PromptData: ObservableObject, Identifiable {
     @Published var prompts: [Prompt] = []
-    @Published var savedPrompts: [Prompt] = MockPrompt.sampleSavedPrompts
     @Published var currentPrompt: Prompt = MockPrompt.samplePrompt
+    //    @Published var savedPrompts: [Prompt] = MockPrompt.sampleSavedPrompts
+    @Published var savedPrompts: [Prompt] = [] {
+        // ENCODE
+        didSet {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(savedPrompts) {
+                UserDefaults.standard.set(encoded, forKey: "SavedPrompts")
+            }
+        }
+    }
     var cancellables = Set<AnyCancellable>()
     
     init() {
-        getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
+        // DECODE
+        if let data = UserDefaults.standard.data(forKey: "SavedPrompts") {
+            let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode([Prompt].self, from: data) {
+                self.savedPrompts = decoded
+            }
+            
+            getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
+        }
     }
     
     func getPrompts(from url: String) {
-            checkURL(url)
+        checkURL(url)
             .decode(type: [PromptWrapper].self, decoder: JSONDecoder())
             .sink { completion in
                 print("COMPLETION TYPE: \(completion)")

@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Prompt: Identifiable, Codable {
+struct Prompt: Codable, Identifiable {
+    var localId = UUID()
     let id: Int
     let title: String
     let question: String
