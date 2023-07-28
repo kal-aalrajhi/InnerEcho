@@ -19,6 +19,7 @@
 		B7B272722A6EDF07007872A3 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B272712A6EDF07007872A3 /* FavoritesView.swift */; };
 		B7B272762A6EE005007872A3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B272752A6EE005007872A3 /* SettingsView.swift */; };
 		B7B272792A6F31C0007872A3 /* PromptResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B272782A6F31C0007872A3 /* PromptResponseView.swift */; };
+		B7D0896C2A734DF800C63BCB /* PromptDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D0896B2A734DF800C63BCB /* PromptDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B7B272752A6EE005007872A3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B7B272772A6F07E5007872A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B7B272782A6F31C0007872A3 /* PromptResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptResponseView.swift; sourceTree = "<group>"; };
+		B7D0896B2A734DF800C63BCB /* PromptDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				B7B2726B2A6EDC8F007872A3 /* PromptView.swift */,
 				B7B272782A6F31C0007872A3 /* PromptResponseView.swift */,
 				B7B2726F2A6EDE29007872A3 /* PromptHistoryView.swift */,
+				B7D0896B2A734DF800C63BCB /* PromptDetailView.swift */,
 				B7B272712A6EDF07007872A3 /* FavoritesView.swift */,
 				B7B272752A6EE005007872A3 /* SettingsView.swift */,
 			);
@@ -184,6 +187,7 @@
 				B7AB5B7E2A6B0A0300525AAB /* PromptDataModel.swift in Sources */,
 				B7AB5B702A6AF4C500525AAB /* InnerEchoApp.swift in Sources */,
 				B7B2726C2A6EDC8F007872A3 /* PromptView.swift in Sources */,
+				B7D0896C2A734DF800C63BCB /* PromptDetailView.swift in Sources */,
 				B7B272722A6EDF07007872A3 /* FavoritesView.swift in Sources */,
 				B7AB5B802A6B0AF500525AAB /* PromptData.swift in Sources */,
 				B7B272792A6F31C0007872A3 /* PromptResponseView.swift in Sources */,

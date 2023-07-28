@@ -14,10 +14,13 @@ struct PromptHistoryView: View {
         NavigationView {
             List {
                 ForEach(promptData.savedPrompts) { prompt in
-                    LazyVStack(alignment: .leading, spacing: 10) {
+                    NavigationLink(destination: PromptDetailView()) {
                         Text(prompt.title)
-                            .font(.headline)
                     }
+//                    LazyVStack(alignment: .leading, spacing: 10) {
+//                        Text(prompt.title)
+//                            .font(.headline)
+//                    }
                 }
             }
             .navigationTitle("History")
