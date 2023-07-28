@@ -13,6 +13,6 @@ struct PromptWrapper: Decodable {
     let url: String
     
     var toPrompt: Prompt {
-        return Prompt(id: id, title: title, url: url, userResponse: "")
+        return Prompt(id: id, title: title, question: "", url: url, userResponse: "")
     }
 }

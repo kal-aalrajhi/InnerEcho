@@ -14,10 +14,7 @@ struct PromptView: View {
     var body: some View {
         VStack {
             Image(promptData.currentPrompt.url)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 350)
-                .cornerRadius(6)
+                .promptImage()
             
             Text(promptData.currentPrompt.title)
                 .font(.largeTitle)

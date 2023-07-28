@@ -15,4 +15,3 @@ extension Image {
             .cornerRadius(6)
     }
 }
-
