@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct PromptView: View {
-    @ObservedObject var promptData: PromptData
+    @EnvironmentObject var promptData: PromptData
     @State private var showingPromptResponse = false
     
     var body: some View {
         VStack {
-            Image(MockPrompt.samplePrompt.url)
+            Image(promptData.currentPrompt.url)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 350)
                 .cornerRadius(6)
             
-            Text(MockPrompt.samplePrompt.title)
+            Text(promptData.currentPrompt.title)
                 .font(.largeTitle)
                 .bold()
             
@@ -27,7 +27,7 @@ struct PromptView: View {
                 showingPromptResponse.toggle()
             }
             .fullScreenCover(isPresented: $showingPromptResponse) {
-                PromptResponseView(promptData: PromptData())
+                PromptResponseView()
             }
         }
     }
@@ -35,6 +35,7 @@ struct PromptView: View {
 
 struct PromptView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptView(promptData: PromptData())
+        PromptView().environmentObject(PromptData())
+        
     }
 }
