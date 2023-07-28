@@ -35,6 +35,7 @@ struct PromptView: View {
 
 struct PromptView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptView()
+        PromptView().environmentObject(PromptData())
+        
     }
 }

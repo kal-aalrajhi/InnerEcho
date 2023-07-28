@@ -13,8 +13,6 @@ struct PromptHistoryView: View {
     var body: some View {
         NavigationView {
             List {
-                // Only display IF there is a non blank response to it
-                
                 ForEach(promptData.savedPrompts) { prompt in
                     LazyVStack(alignment: .leading, spacing: 10) {
                         Text(prompt.title)
