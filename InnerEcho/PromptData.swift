@@ -11,7 +11,7 @@ import Combine
 
 final class PromptData: ObservableObject {
     @Published var prompts: [Prompt] = []
-    @Published var savedPrompts: [Prompt] = []
+    @Published var savedPrompts: [Prompt] = MockPrompt.sampleSavedPrompts
     @Published var currentPrompt: Prompt = MockPrompt.samplePrompt
     var cancellables = Set<AnyCancellable>()
     

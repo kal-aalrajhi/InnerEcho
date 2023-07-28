@@ -6,15 +6,7 @@
 //
 
 import Foundation
-
-//struct Prompt: Identifiable, Codable {
-//    let id: Int
-//    let title: String
-//    let url: String // full image URL
-//    let userResponse: String
-//}
-
-// Swifts codable protocole will set the value to 'nil' when it cannot find the 'userResponse' key in the JSON data. Therefore we must use a property wrapper to get around having a 'nil' value.
+// Swifts codable protocol will set the value to 'nil' when it cannot find the 'userResponse' key in the JSON data. Therefore we must use a property wrapper to get around having a 'nil' value.
 struct PromptWrapper: Decodable {
     let id: Int
     let title: String

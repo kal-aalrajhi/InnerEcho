@@ -8,32 +8,32 @@
 import SwiftUI
 
 struct PromptDetailView: View {
-    @EnvironmentObject var promptData: PromptData
+    let selectedPrompt: Prompt
     // No longer current prompt, we need the prompt we clicked into
     var body: some View {
         VStack {
             Text("Prompt ID: ")
             
-            Image(promptData.currentPrompt.url)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 350)
-                .cornerRadius(6)
+//            Image(selectedPrompt.url)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .frame(height: 350)
+//                .cornerRadius(6)
             
-            Text(promptData.currentPrompt.title)
+            Text(selectedPrompt.title)
                 .font(.largeTitle)
                 .bold()
             
-            Text(promptData.currentPrompt.userResponse)
+            Text("Id: \(selectedPrompt.id)")
                 .font(.largeTitle)
                 .bold()
         }
+        
     }
 }
 
 struct PromptDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptDetailView()
-            .environmentObject(PromptData())
+        PromptDetailView(selectedPrompt: MockPrompt.samplePrompt)
     }
 }
