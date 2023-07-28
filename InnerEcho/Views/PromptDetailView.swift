@@ -19,9 +19,8 @@ struct PromptDetailView: View {
             Image(selectedPrompt.url)
                 .promptImage()
             
-            Text(selectedPrompt.title)
-                .font(.largeTitle)
-                .bold()
+            PromptText(title: selectedPrompt.title,
+                       question: selectedPrompt.question)
             
             Text(selectedPrompt.userResponse)
                 .font(.largeTitle)

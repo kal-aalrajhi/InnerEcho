@@ -16,9 +16,8 @@ struct PromptView: View {
             Image(promptData.currentPrompt.url)
                 .promptImage()
             
-            Text(promptData.currentPrompt.title)
-                .font(.largeTitle)
-                .bold()
+            PromptText(title: promptData.currentPrompt.title,
+                       question: promptData.currentPrompt.question)
             
             Button("Response") {
                 showingPromptResponse.toggle()

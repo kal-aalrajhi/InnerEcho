@@ -99,7 +99,6 @@
 			children = (
 				B7AB5B712A6AF4C500525AAB /* DashboardView.swift */,
 				B7B2726B2A6EDC8F007872A3 /* PromptView.swift */,
-				B7D089722A7400A200C63BCB /* PromptText.swift */,
 				B7B272782A6F31C0007872A3 /* PromptResponseView.swift */,
 				B7B2726F2A6EDE29007872A3 /* PromptHistoryView.swift */,
 				B7D0896B2A734DF800C63BCB /* PromptDetailView.swift */,
@@ -121,6 +120,7 @@
 		B7D0896F2A73F95B00C63BCB /* Modifiers and Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B7D089722A7400A200C63BCB /* PromptText.swift */,
 				B7D089702A73F9CF00C63BCB /* ImageExtensions.swift */,
 			);
 			path = "Modifiers and Extensions";

@@ -16,9 +16,8 @@ struct PromptResponseView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text(promptData.currentPrompt.title)
-                    .font(.largeTitle)
-                    .bold()
+                PromptText(title: promptData.currentPrompt.title,
+                           question: promptData.currentPrompt.question)
                 
                 TextEditor(text: $responseText)
                     .font(.body)
