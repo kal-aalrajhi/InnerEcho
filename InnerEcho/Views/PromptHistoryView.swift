@@ -22,9 +22,17 @@ struct PromptHistoryView: View {
                         }
                     }
                 }
+                .onDelete(perform: { indexSet in
+                    delete(indexSet: indexSet)
+                })
             }
             .navigationTitle("History")
         }
+    }
+    
+    private func delete(indexSet: IndexSet) {
+        promptData.savedPrompts.remove(atOffsets: indexSet)
+        print(promptData.savedPrompts)
     }
 }
 

@@ -9,7 +9,7 @@
 import Foundation
 import Combine
 
-final class PromptData: ObservableObject {
+final class PromptData: ObservableObject, Identifiable {
     @Published var prompts: [Prompt] = []
     @Published var savedPrompts: [Prompt] = MockPrompt.sampleSavedPrompts
     @Published var currentPrompt: Prompt = MockPrompt.samplePrompt
