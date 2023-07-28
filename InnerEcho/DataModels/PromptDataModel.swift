@@ -18,7 +18,7 @@ struct Prompt: Identifiable, Codable {
 
 struct MockPrompt {
     static var samplePrompt = Prompt(id: 19,
-                                     title: "Some random prompt with filler text. Is this what you were looking for?",
+                                     title: "Some random prompt with filler text.",
                                      question: "Is this what you were looking for?",
                                      url: "mock-image",
                                      userResponse: "")
