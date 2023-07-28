@@ -17,10 +17,7 @@ struct PromptDetailView: View {
                 .bold()
             
             Image(selectedPrompt.url)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 350)
-                .cornerRadius(6)
+                .promptImage()
             
             Text(selectedPrompt.title)
                 .font(.largeTitle)
