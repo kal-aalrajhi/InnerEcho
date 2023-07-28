@@ -19,6 +19,11 @@ struct PromptView: View {
             PromptText(title: promptData.currentPrompt.title,
                        question: promptData.currentPrompt.question)
             
+            Button("Change Prompt") {
+                promptData.currentPrompt = MockPrompt.sampleSavedPrompts[2] // try 0 as well
+            }
+            Spacer()
+            
             Button("Response") {
                 showingPromptResponse.toggle()
             }
