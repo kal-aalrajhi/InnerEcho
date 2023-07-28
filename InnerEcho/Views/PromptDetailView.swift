@@ -19,12 +19,14 @@ struct PromptDetailView: View {
             Image(selectedPrompt.url)
                 .promptImage()
             
-            PromptText(title: selectedPrompt.title,
-                       question: selectedPrompt.question)
-            
-            Text(selectedPrompt.userResponse)
-                .font(.largeTitle)
-                .bold()
+            VStack(alignment: .leading) {
+                PromptText(title: selectedPrompt.title,
+                           question: selectedPrompt.question)
+                
+                Text(selectedPrompt.userResponse)
+                    .font(.body)
+                    .padding([.leading, .bottom, .trailing])
+            }
         }
     }
 }
