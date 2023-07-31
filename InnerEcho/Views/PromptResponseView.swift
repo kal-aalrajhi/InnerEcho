@@ -26,10 +26,7 @@ struct PromptResponseView: View {
                     .padding(10)
                 
                 Button {
-                    promptData.currentPrompt.userResponse = responseText
-                    promptData.savedPrompts.append(promptData.currentPrompt)
-
-                    dismiss()
+                    saveResponse()
                 } label: {
                     Text("Save".uppercased())
                         .font(.headline)
@@ -48,6 +45,15 @@ struct PromptResponseView: View {
                 }
             }
         }
+    }
+    func saveResponse() {
+        promptData.currentPrompt.userResponse = responseText
+        print("Is this a duplicate??: ", !promptData.isDuplicate(prompt: promptData.currentPrompt))
+        if (!promptData.isDuplicate(prompt: promptData.currentPrompt)) {
+            promptData.savedPrompts.append(promptData.currentPrompt)
+        }
+
+        dismiss()
     }
 }
 
