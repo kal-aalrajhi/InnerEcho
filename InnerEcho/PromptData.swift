@@ -32,11 +32,11 @@ final class PromptData: ObservableObject, Identifiable {
                 self.savedPrompts = decoded
             }
             
-            getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
+            loadPrompts(from: "https://jsonplaceholder.typicode.com/photos")
         }
     }
     
-    func getPrompts(from url: String) {
+    func loadPrompts(from url: String) {
         checkURL(url)
             .decode(type: [PromptWrapper].self, decoder: JSONDecoder())
             .sink { completion in
@@ -75,11 +75,22 @@ final class PromptData: ObservableObject, Identifiable {
             .eraseToAnyPublisher()
     }
     
-    func isDuplicateSave(prompt: Prompt) -> Bool {
+    func isDuplicate(prompt: Prompt) -> Bool {
         return self.savedPrompts.contains(where: { $0.id == prompt.id })
     }
     
-    func findSavedPromptIdx(prompt: Prompt) -> Int? {
+    func updatePromptResponse(prompt: Prompt, userResponse: String) {
+        if let promptToUpdate = self.findSavedPromptIdx(prompt: prompt) {
+            self.savedPrompts[promptToUpdate].userResponse = userResponse
+            
+            // update current prompt to this saved prompt
+            self.currentPrompt = self.savedPrompts[promptToUpdate]
+        } else {
+            print("Unable to update prompt user response.")
+        }
+    }
+    
+    private func findSavedPromptIdx(prompt: Prompt) -> Int? {
         guard let promptFound = self.savedPrompts.firstIndex(where: { $0.id == prompt.id }) else {
             print ("Prompt not found.")
             return nil
@@ -87,11 +98,16 @@ final class PromptData: ObservableObject, Identifiable {
         return promptFound
     }
     
-    func updatePromptResponse(prompt: Prompt, userResponse: String) {
-        if let promptToUpdate = self.findSavedPromptIdx(prompt: prompt) {
-            self.savedPrompts[promptToUpdate].userResponse = userResponse
+    func saveResponse(prompt: Prompt, userResponse: String) {
+        // Check for duplicate saved response
+        if (isDuplicate(prompt: prompt)) {
+            // Update current saved prompt
+            print("Duplicate found!")
+            updatePromptResponse(prompt: prompt, userResponse: userResponse)
         } else {
-            print("Unable to update prompt user response.")
+            // Add new prompt to saved prompts
+            print("Duplicate NOT found!")
+            savedPrompts.append(prompt)
         }
     }
 }
