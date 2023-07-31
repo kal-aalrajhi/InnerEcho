@@ -56,15 +56,30 @@ struct PromptResponseView: View {
             promptData.savedPrompts.append(promptToSave)
         } else {
             // Duplicate found, update response
-            if var promptToUpdate = promptData.findSavedPrompt(prompt: promptToSave) {
-                promptToUpdate.userResponse = responseText
-            } else {
-                print("Unable to update prompt user response.")
-            }
+            promptData.updatePromptResponse(prompt: promptToSave, userResponse: responseText)
         }
 
         dismiss()
     }
+//    func saveResponse() {
+//        var promptToSave = promptData.currentPrompt
+//
+//        // Check for duplicate saved response
+//        if (!promptData.isDuplicateSave(prompt: promptToSave)) {
+//            // No duplicate found
+//            promptToSave.userResponse = responseText
+//            promptData.savedPrompts.append(promptToSave)
+//        } else {
+//            // Duplicate found, update response
+//            if var promptToUpdate = promptData.findSavedPrompt(prompt: promptToSave) {
+//                promptToUpdate.userResponse = responseText
+//            } else {
+//                print("Unable to update prompt user response.")
+//            }
+//        }
+//
+//        dismiss()
+//    }
 }
 
 struct PromptResponse_Previews: PreviewProvider {

@@ -79,11 +79,19 @@ final class PromptData: ObservableObject, Identifiable {
         return self.savedPrompts.contains(where: { $0.id == prompt.id })
     }
     
-    func findSavedPrompt(prompt: Prompt) -> Prompt? {
-        guard let promptFound = self.savedPrompts.first(where: { $0.id == prompt.id }) else {
+    func findSavedPromptIdx(prompt: Prompt) -> Int? {
+        guard let promptFound = self.savedPrompts.firstIndex(where: { $0.id == prompt.id }) else {
             print ("Prompt not found.")
             return nil
         }
         return promptFound
+    }
+    
+    func updatePromptResponse(prompt: Prompt, userResponse: String) {
+        if let promptToUpdate = self.findSavedPromptIdx(prompt: prompt) {
+            self.savedPrompts[promptToUpdate].userResponse = userResponse
+        } else {
+            print("Unable to update prompt user response.")
+        }
     }
 }
