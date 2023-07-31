@@ -47,10 +47,20 @@ struct PromptResponseView: View {
         }
     }
     func saveResponse() {
-        promptData.currentPrompt.userResponse = responseText
-        print("Is this a duplicate??: ", !promptData.isDuplicate(prompt: promptData.currentPrompt))
-        if (!promptData.isDuplicate(prompt: promptData.currentPrompt)) {
-            promptData.savedPrompts.append(promptData.currentPrompt)
+        var promptToSave = promptData.currentPrompt
+        
+        // Check for duplicate saved response
+        if (!promptData.isDuplicateSave(prompt: promptToSave)) {
+            // No duplicate found
+            promptToSave.userResponse = responseText
+            promptData.savedPrompts.append(promptToSave)
+        } else {
+            // Duplicate found, update response
+            if var promptToUpdate = promptData.findSavedPrompt(prompt: promptToSave) {
+                promptToUpdate.userResponse = responseText
+            } else {
+                print("Unable to update prompt user response.")
+            }
         }
 
         dismiss()

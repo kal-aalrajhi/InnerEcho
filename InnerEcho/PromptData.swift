@@ -75,7 +75,15 @@ final class PromptData: ObservableObject, Identifiable {
             .eraseToAnyPublisher()
     }
     
-    func isDuplicate(prompt: Prompt) -> Bool {
+    func isDuplicateSave(prompt: Prompt) -> Bool {
         return self.savedPrompts.contains(where: { $0.id == prompt.id })
+    }
+    
+    func findSavedPrompt(prompt: Prompt) -> Prompt? {
+        guard let promptFound = self.savedPrompts.first(where: { $0.id == prompt.id }) else {
+            print ("Prompt not found.")
+            return nil
+        }
+        return promptFound
     }
 }
