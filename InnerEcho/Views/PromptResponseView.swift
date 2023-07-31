@@ -24,7 +24,6 @@ struct PromptResponseView: View {
                     .padding(10)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
                     .padding(10)
-                
                 Button {
                     promptData.saveResponse(prompt: promptData.currentPrompt, userResponse: responseText)
                     dismiss()
