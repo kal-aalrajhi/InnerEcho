@@ -20,8 +20,11 @@ struct PromptView: View {
                 PromptText(title: promptData.currentPrompt.title,
                            question: promptData.currentPrompt.question)
                 
-                Button("Response") {
+                Button {
                     showingPromptResponse.toggle()
+                } label: {
+                    Text("respond".uppercased())
+                        .ButtonLabelStyle()
                 }
                 .fullScreenCover(isPresented: $showingPromptResponse) {
                     PromptResponseView()
