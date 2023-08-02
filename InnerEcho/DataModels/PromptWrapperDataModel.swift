@@ -10,6 +10,7 @@ import Foundation
 struct PromptWrapper: Decodable {
     let id: Int
     let title: String
+    let question: String
     let url: String
     
     var toPrompt: Prompt {

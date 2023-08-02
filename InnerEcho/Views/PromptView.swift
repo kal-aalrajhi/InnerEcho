@@ -33,7 +33,7 @@ struct PromptView: View {
             .toolbar {
                 Button {
                     // To next prompt
-                    promptData.currentPrompt = MockPrompt.sampleSavedPrompts[2]
+                    promptData.randomPrompt()
                 } label: {
                     Image(systemName: "arrow.forward.circle")
                 }

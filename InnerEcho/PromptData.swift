@@ -93,19 +93,19 @@ final class PromptData: ObservableObject, Identifiable {
     }
     
     func isDuplicate(prompt: Prompt) -> Bool {
-        return self.savedPrompts.contains(where: { $0.id == prompt.id })
+        return savedPrompts.contains(where: { $0.id == prompt.id })
     }
     
     func updateSavedPromptResponse(prompt: Prompt) {
-        if let promptToUpdate = self.findSavedPromptIdx(prompt: prompt) {
-            self.savedPrompts[promptToUpdate].userResponse = prompt.userResponse
+        if let promptToUpdate = findSavedPromptIdx(prompt: prompt) {
+            savedPrompts[promptToUpdate].userResponse = prompt.userResponse
         } else {
             print("Unable to update prompt user response.")
         }
     }
     
     private func findSavedPromptIdx(prompt: Prompt) -> Int? {
-        guard let promptFound = self.savedPrompts.firstIndex(where: { $0.id == prompt.id }) else {
+        guard let promptFound = savedPrompts.firstIndex(where: { $0.id == prompt.id }) else {
             print ("Prompt not found.")
             return nil
         }
@@ -115,7 +115,7 @@ final class PromptData: ObservableObject, Identifiable {
     func saveResponse(prompt: Prompt, userResponse: String) {
         var promptCopy = prompt
         promptCopy.userResponse = userResponse
-        self.currentPrompt = promptCopy
+        currentPrompt = promptCopy
         
         // Check for duplicate saved response
         if (isDuplicate(prompt: promptCopy)) {
