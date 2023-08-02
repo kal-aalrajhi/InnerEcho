@@ -125,4 +125,13 @@ final class PromptData: ObservableObject, Identifiable {
             savedPrompts.append(promptCopy)
         }
     }
+    
+    func randomPrompt() {
+        if let randomPrompt = prompts.randomElement() {
+            print("Here is the random prompt: \(randomPrompt)")
+            currentPrompt = randomPrompt
+        } else {
+            print("No more prompts available.")
+        }
+    }
 }
