@@ -127,7 +127,11 @@ final class PromptData: ObservableObject, Identifiable {
     }
     
     func randomPrompt() {
-        if let randomPrompt = prompts.randomElement() {
+        // Shuffle the prompts so that the order is random
+        let shuffledPrompts = prompts.shuffled()
+        
+        // Find the first prompt that isn't a duplicate
+        if let randomPrompt = shuffledPrompts.first(where: { !isDuplicate(prompt: $0) }) {
             print("Here is the random prompt: \(randomPrompt)")
             currentPrompt = randomPrompt
         } else {
