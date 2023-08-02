@@ -16,30 +16,24 @@ struct PromptResponseView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text(promptData.currentPrompt.title)
-                    .font(.largeTitle)
-                    .bold()
+                PromptText(title: promptData.currentPrompt.title,
+                           question: promptData.currentPrompt.question)
                 
                 TextEditor(text: $responseText)
                     .font(.body)
                     .padding(10)
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray, lineWidth: 1))
                     .padding(10)
-                
                 Button {
-                    promptData.currentPrompt.userResponse = responseText
-                    promptData.savedPrompts.append(promptData.currentPrompt)
-
+                    promptData.saveResponse(prompt: promptData.currentPrompt, userResponse: responseText)
                     dismiss()
                 } label: {
-                    Text("Save".uppercased())
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding(20)
-                        .frame(width: 250)
-                        .background(.blue)
-                        .cornerRadius(10)
+                    Text("save".uppercased())
+                        .ButtonLabelStyle()
                 }
+            }
+            .onAppear {
+                responseText = promptData.currentPrompt.userResponse
             }
             .toolbar {
                 Button {

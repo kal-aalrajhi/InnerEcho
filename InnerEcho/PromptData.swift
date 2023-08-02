@@ -9,32 +9,66 @@
 import Foundation
 import Combine
 
-final class PromptData: ObservableObject {
+final class PromptData: ObservableObject, Identifiable {
     @Published var prompts: [Prompt] = []
-    @Published var savedPrompts: [Prompt] = []
-    @Published var currentPrompt: Prompt = MockPrompt.samplePrompt
+    //    @Published var currentPrompt: Prompt = MockPrompt.samplePrompt
+    @Published var currentPrompt: Prompt = MockPrompt.samplePrompt {
+        // ENCODE
+        didSet {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(currentPrompt) {
+                UserDefaults.standard.set(encoded, forKey: "currentPrompt")
+            }
+        }
+    }
+    //    @Published var savedPrompts: [Prompt] = MockPrompt.sampleSavedPrompts
+    @Published var savedPrompts: [Prompt] = [] { // using user defaults instead of @AppStorage for more complex types
+        // ENCODE
+        didSet {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(savedPrompts) {
+                UserDefaults.standard.set(encoded, forKey: "savedPrompts")
+            }
+        }
+    }
     var cancellables = Set<AnyCancellable>()
     
     init() {
-        getPrompts(from: "https://jsonplaceholder.typicode.com/photos")
-    }
-    
-    func getPrompts(from url: String) {
-            checkURL(url)
-            .decode(type: [PromptWrapper].self, decoder: JSONDecoder())
-            .sink { completion in
-                print("COMPLETION TYPE: \(completion)")
-                
-                switch completion {
-                case .finished:
-                    print("Finished!")
-                case .failure(let recievedError):
-                    print("Completion error: \(recievedError)")
-                }
-            } receiveValue: { [weak self] returnedPromptWrappers in
-                self?.prompts = returnedPromptWrappers.map { $0.toPrompt }
+        // DECODE current prompt
+        if let data = UserDefaults.standard.data(forKey: "currentPrompt") {
+            let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode(Prompt.self, from: data) {
+                self.currentPrompt = decoded
             }
-            .store(in: &cancellables)
+            
+            // DECODE saved prompts
+            if let data = UserDefaults.standard.data(forKey: "savedPrompts") {
+                let decoder = JSONDecoder()
+                if let decoded = try? decoder.decode([Prompt].self, from: data) {
+                    self.savedPrompts = decoded
+                }
+                
+                loadPrompts(from: "https://jsonplaceholder.typicode.com/photos")
+            }
+        }
+        
+        func loadPrompts(from url: String) {
+            checkURL(url)
+                .decode(type: [PromptWrapper].self, decoder: JSONDecoder())
+                .sink { completion in
+                    print("COMPLETION TYPE: \(completion)")
+                    
+                    switch completion {
+                    case .finished:
+                        print("Finished!")
+                    case .failure(let recievedError):
+                        print("Completion error: \(recievedError)")
+                    }
+                } receiveValue: { [weak self] returnedPromptWrappers in
+                    self?.prompts = returnedPromptWrappers.map { $0.toPrompt }
+                }
+                .store(in: &cancellables)
+        }
     }
     
     // Helper function
@@ -56,5 +90,39 @@ final class PromptData: ObservableObject {
                 return data
             }
             .eraseToAnyPublisher()
+    }
+    
+    func isDuplicate(prompt: Prompt) -> Bool {
+        return self.savedPrompts.contains(where: { $0.id == prompt.id })
+    }
+    
+    func updateSavedPromptResponse(prompt: Prompt) {
+        if let promptToUpdate = self.findSavedPromptIdx(prompt: prompt) {
+            self.savedPrompts[promptToUpdate].userResponse = prompt.userResponse
+        } else {
+            print("Unable to update prompt user response.")
+        }
+    }
+    
+    private func findSavedPromptIdx(prompt: Prompt) -> Int? {
+        guard let promptFound = self.savedPrompts.firstIndex(where: { $0.id == prompt.id }) else {
+            print ("Prompt not found.")
+            return nil
+        }
+        return promptFound
+    }
+    
+    func saveResponse(prompt: Prompt, userResponse: String) {
+        var promptCopy = prompt
+        promptCopy.userResponse = userResponse
+        self.currentPrompt = promptCopy
+        
+        // Check for duplicate saved response
+        if (isDuplicate(prompt: promptCopy)) {
+            updateSavedPromptResponse(prompt: promptCopy)
+        } else {
+            // Add new prompt to saved prompts
+            savedPrompts.append(promptCopy)
+        }
     }
 }

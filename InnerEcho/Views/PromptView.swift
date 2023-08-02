@@ -12,22 +12,30 @@ struct PromptView: View {
     @State private var showingPromptResponse = false
     
     var body: some View {
-        VStack {
-            Image(promptData.currentPrompt.url)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 350)
-                .cornerRadius(6)
-            
-            Text(promptData.currentPrompt.title)
-                .font(.largeTitle)
-                .bold()
-            
-            Button("Response") {
-                showingPromptResponse.toggle()
+        NavigationView {
+            VStack {
+                Image(promptData.currentPrompt.url)
+                    .promptImage()
+                
+                PromptText(title: promptData.currentPrompt.title,
+                           question: promptData.currentPrompt.question)
+                
+                Button {
+                    showingPromptResponse.toggle()
+                } label: {
+                    Text("respond".uppercased())
+                        .ButtonLabelStyle()
+                }
+                .fullScreenCover(isPresented: $showingPromptResponse) {
+                    PromptResponseView()
+                }
             }
-            .fullScreenCover(isPresented: $showingPromptResponse) {
-                PromptResponseView()
+            .toolbar {
+                Button {
+                    promptData.currentPrompt = MockPrompt.sampleSavedPrompts[2]
+                } label: {
+                    Image(systemName: "arrow.forward.circle")
+                }
             }
         }
     }
@@ -35,7 +43,8 @@ struct PromptView: View {
 
 struct PromptView_Previews: PreviewProvider {
     static var previews: some View {
-        PromptView().environmentObject(PromptData())
+        PromptView()
+            .environmentObject(PromptData())
         
     }
 }
