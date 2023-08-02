@@ -48,7 +48,7 @@ final class PromptData: ObservableObject, Identifiable {
                     self.savedPrompts = decoded
                 }
                 
-                loadPrompts(from: "https://jsonplaceholder.typicode.com/photos")
+                loadPrompts(from: "https://kal-aalrajhi.github.io/prompts_api/prompts.json")
             }
         }
         
