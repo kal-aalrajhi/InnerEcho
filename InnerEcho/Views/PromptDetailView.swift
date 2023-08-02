@@ -9,23 +9,25 @@ import SwiftUI
 
 struct PromptDetailView: View {
     let selectedPrompt: Prompt
-
+    
     var body: some View {
-        VStack {
-            Text("Id: \(selectedPrompt.id)")
-                .font(.largeTitle)
-                .bold()
-            
-            Image(selectedPrompt.url)
-                .promptImage()
-            
-            VStack(alignment: .leading) {
-                PromptText(title: selectedPrompt.title,
-                           question: selectedPrompt.question)
+        ScrollView {
+            VStack {
+                Text("Id: \(selectedPrompt.id)")
+                    .font(.largeTitle)
+                    .bold()
                 
-                Text(selectedPrompt.userResponse)
-                    .font(.body)
-                    .padding([.leading, .bottom, .trailing])
+                Image(selectedPrompt.url)
+                    .promptImage()
+                
+                VStack(alignment: .leading) {
+                    PromptText(title: selectedPrompt.title,
+                               question: selectedPrompt.question)
+                    
+                    Text(selectedPrompt.userResponse)
+                        .font(.body)
+                        .padding([.leading, .bottom, .trailing])
+                }
             }
         }
     }
