@@ -12,23 +12,27 @@ struct PromptView: View {
     @State private var showingPromptResponse = false
     
     var body: some View {
-        VStack {
-            Image(promptData.currentPrompt.url)
-                .promptImage()
-            
-            PromptText(title: promptData.currentPrompt.title,
-                       question: promptData.currentPrompt.question)
-            
-            Button("Change Prompt") {
-                promptData.currentPrompt = MockPrompt.sampleSavedPrompts[2] // try 0 as well
+        NavigationView {
+            VStack {
+                Image(promptData.currentPrompt.url)
+                    .promptImage()
+                
+                PromptText(title: promptData.currentPrompt.title,
+                           question: promptData.currentPrompt.question)
+                
+                Button("Response") {
+                    showingPromptResponse.toggle()
+                }
+                .fullScreenCover(isPresented: $showingPromptResponse) {
+                    PromptResponseView()
+                }
             }
-            Spacer()
-            
-            Button("Response") {
-                showingPromptResponse.toggle()
-            }
-            .fullScreenCover(isPresented: $showingPromptResponse) {
-                PromptResponseView()
+            .toolbar {
+                Button {
+                    promptData.currentPrompt = MockPrompt.sampleSavedPrompts[2]
+                } label: {
+                    Image(systemName: "arrow.forward.circle")
+                }
             }
         }
     }

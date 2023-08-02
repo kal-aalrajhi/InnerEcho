@@ -28,13 +28,8 @@ struct PromptResponseView: View {
                     promptData.saveResponse(prompt: promptData.currentPrompt, userResponse: responseText)
                     dismiss()
                 } label: {
-                    Text("Save".uppercased())
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding(20)
-                        .frame(width: 250)
-                        .background(.blue)
-                        .cornerRadius(10)
+                    Text("save".uppercased())
+                        .ButtonLabelStyle()
                 }
             }
             .onAppear {

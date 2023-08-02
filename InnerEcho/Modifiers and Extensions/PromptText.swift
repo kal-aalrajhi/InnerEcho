@@ -17,7 +17,6 @@ struct PromptText: View {
         }
         .font(.largeTitle)
         .bold()
-//        .lineLimit(nil)
         .padding()
     }
 }
