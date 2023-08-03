@@ -14,8 +14,14 @@ struct PromptView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Image(promptData.currentPrompt.url)
-                    .promptImage()
+                
+                AsyncImage(url: URL(string: promptData.currentPrompt.url)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .promptImage()
+                
                 
                 PromptText(title: promptData.currentPrompt.title,
                            question: promptData.currentPrompt.question)

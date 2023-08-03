@@ -15,3 +15,12 @@ extension Image {
             .cornerRadius(6)
     }
 }
+
+extension AsyncImage {
+    func promptImage() -> some View {
+        self
+            .aspectRatio(contentMode: .fit)
+            .frame(height: 350)
+            .cornerRadius(6)
+    }
+}
