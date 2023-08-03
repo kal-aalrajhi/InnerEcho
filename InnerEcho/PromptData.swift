@@ -68,6 +68,9 @@ final class PromptData: ObservableObject, Identifiable {
                     self?.prompts = returnedPromptWrappers.map { $0.toPrompt }
                 }
                 .store(in: &cancellables)
+            
+            print(prompts)
+            print(currentPrompt)
         }
     }
     

@@ -15,7 +15,7 @@ struct PromptView: View {
         NavigationView {
             VStack {
                 
-                AsyncImage(url: URL(string: promptData.currentPrompt.url)) { image in
+                AsyncImage(url: URL(string: "\(promptData.currentPrompt.url)?grayscale")) { image in
                     image.resizable()
                 } placeholder: {
                     ProgressView()
