@@ -15,7 +15,8 @@ struct PromptView: View {
         NavigationView {
             VStack {
                 
-                AsyncImage(url: URL(string: "\(promptData.currentPrompt.url)?grayscale")) { image in
+                // Add a time stamp to force Async to reload. (AsyncImage only reloads if the URL changes)
+                AsyncImage(url: URL(string: "\(promptData.currentPrompt.url)?grayscale&timestamp=\(Date().timeIntervalSince1970)")) { image in
                     image.resizable()
                 } placeholder: {
                     ProgressView()
