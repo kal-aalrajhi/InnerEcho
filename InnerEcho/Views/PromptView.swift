@@ -14,8 +14,15 @@ struct PromptView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Image(promptData.currentPrompt.url)
-                    .promptImage()
+                
+                // Add a time stamp to force Async to reload. (AsyncImage only reloads if the URL changes)
+                AsyncImage(url: URL(string: "\(promptData.currentPrompt.url)?grayscale&timestamp=\(Date().timeIntervalSince1970)")) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .promptImage()
+                
                 
                 PromptText(title: promptData.currentPrompt.title,
                            question: promptData.currentPrompt.question)
@@ -32,7 +39,8 @@ struct PromptView: View {
             }
             .toolbar {
                 Button {
-                    promptData.currentPrompt = MockPrompt.sampleSavedPrompts[2]
+                    // To next prompt
+                    promptData.randomPrompt()
                 } label: {
                     Image(systemName: "arrow.forward.circle")
                 }
